@@ -31,10 +31,16 @@ import Sidebar from "components/Sidebar";
 import styles from "styles/containers/builder";
 
 class Builder extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { date: new Date(), showBrickPane: false };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date(), showGoals: true };
+
+    this.toggleGoalsModal = this.toggleGoalsModal.bind(this);
+  }
+
+  toggleGoalsModal() {
+    this.setState(({ showGoals }) => ({ showGoals: !showGoals }));
+  }
 
   render() {
     const {
@@ -101,6 +107,9 @@ class Builder extends React.Component {
           onClickSetBrick={setBrick}
           utilsOpen={utilsOpen}
           onClickToggleUtils={toggleUtils}
+          showGoals={this.state.showGoals}
+          inversed={utilsOpen}
+          toggleGoalsModal={this.toggleGoalsModal}
         >
           <Sidebar
             utilsOpen={utilsOpen}
@@ -111,7 +120,11 @@ class Builder extends React.Component {
             grid={gridVisible}
           />
         </BottomBar>
-        <Help inversed={utilsOpen} mode={mode} />
+        <Help
+          inversed={utilsOpen}
+          mode={mode}
+          showGoals={this.state.showGoals}
+        />
       </div>
     );
   }
