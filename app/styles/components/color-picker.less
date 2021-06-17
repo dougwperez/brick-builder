@@ -4,36 +4,34 @@
 // Component File
 // ----------------
 
-@import '~styles/vars';
-
+@import "~styles/vars";
 
 :local(.colorPicker) {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 
   &:hover {
     cursor: pointer;
   }
 }
 
-
 :local(.brick) {
   width: 35px;
 }
 
-
 :local(.picker) {
   position: absolute;
-  top: ~'calc(100% + 35px)';
-  left: ~'calc(50% - 15px)';
+  top: ~"calc(100% + 35px)";
+  left: ~"calc(50% - 15px)";
   display: none;
+  border-right: pink 12px;
   // transform: translateX();
 }
 
-
 :local(.visible) {
-  composes: picker;
-  display: block;
+  // composes: picker;
+  border-right: pink 12px;
+  // display: block;
   // transform: scaleX(0);
 }

@@ -1,16 +1,15 @@
-import React from 'react';
-import { saveAs } from 'file-saver';
-import autobind from 'autobind-decorator';
+import React from "react";
+import { saveAs } from "file-saver";
+import autobind from "autobind-decorator";
 
-import FileUploader from './FileUploader';
-import Brick from 'components/engine/Brick';
+import FileUploader from "./FileUploader";
+import Brick from "components/engine/Brick";
 
-import styles from '../styles/components/sidebar';
-
+import styles from "../styles/components/sidebar";
 
 class Sidebar extends React.Component {
   render() {
-    const { utilsOpen, resetScene } = this.props;
+    const { utilsOpen, resetScene, onClickToggleGrid, grid } = this.props;
     return (
       <div className={utilsOpen ? styles.visible : styles.sidebar}>
         <div className={styles.content}>
@@ -34,6 +33,14 @@ class Sidebar extends React.Component {
               </div>
             </FileUploader>
           </div>
+          <div className={styles.row}>
+            <div active={grid} onClick={onClickToggleGrid}>
+              <div className={styles.text}>
+                <i className="ion-grid" />
+                <span>Toggle Grid</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -42,7 +49,7 @@ class Sidebar extends React.Component {
   @autobind
   _exportFile() {
     const { objects } = this.props;
-    const fileName = 'scene.json';
+    const fileName = "scene.json";
     const simplified = objects.map((o) => ({
       intersect: o._intersect,
       color: o._color,
@@ -51,7 +58,7 @@ class Sidebar extends React.Component {
       translation: o._translation,
     }));
     var fileToSave = new Blob([JSON.stringify(simplified)], {
-      type: 'application/json',
+      type: "application/json",
       name: fileName,
     });
     saveAs(fileToSave, fileName);
@@ -61,10 +68,12 @@ class Sidebar extends React.Component {
   @autobind
   _importFile(objects) {
     const { importScene } = this.props;
-    const bricks = objects.map((o) => new Brick(o.intersect, o.color, o.dimensions, o.rotation, o.translation));
+    const bricks = objects.map(
+      (o) =>
+        new Brick(o.intersect, o.color, o.dimensions, o.rotation, o.translation)
+    );
     importScene(bricks);
   }
 }
-
 
 export default Sidebar;

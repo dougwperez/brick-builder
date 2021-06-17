@@ -4,11 +4,9 @@
 // Component File
 // ----------------
 
-@import '~styles/vars';
-
+@import "~styles/vars";
 
 @button-color-default: fade(@text-color-secondary, 40);
-
 
 :local(.button) {
   padding: @base-padding @base-padding * 2;
@@ -18,6 +16,7 @@
   justify-content: center;
   color: @button-color-default;
   transition: all @base-transition-time ease-in-out;
+  padding: 6px;
 
   &:hover {
     color: @text-color-secondary;
@@ -25,21 +24,19 @@
   }
 }
 
-
 :local(.active) {
   composes: button;
   color: @text-color-secondary;
   background: @secondary-blue;
-  box-shadow: inset -2px 0px 3px rgba(0, 0, 0, 0.25), inset 2px 0px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: inset -2px 0px 3px rgba(0, 0, 0, 0.25),
+    inset 2px 0px 3px rgba(0, 0, 0, 0.25);
 }
 
-
 :local(.icon) {
-  font-family: 'ionicons';
+  font-family: "ionicons";
   font-size: 1.5em;
   margin-bottom: @base-margin-small;
 }
-
 
 :local(.text) {
   text-transform: uppercase;
