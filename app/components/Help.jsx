@@ -1,5 +1,6 @@
 import React from "react";
 import { createPortal } from "react-dom";
+import Button from "components/Button";
 
 import styles from "styles/components/help";
 
@@ -10,8 +11,8 @@ const HelpModal = ({ open, toggleClose }) => {
         <div className={styles.close} onClick={toggleClose}>
           <i className="ion-close" />
         </div>
-        <h1 style={{ textAlign: "center" }}>Brick Builder</h1>
-        <h3>What is this?</h3>
+        <h1 style={{ textAlign: "center" }}>Goal Constructor</h1>
+        <h3>Select up to three daily goals:</h3>
         <p>
           Brick Builder is a simple web app to create brick objects (heavily
           inspired by Lego in fact). You can also import and export models from
@@ -71,16 +72,24 @@ class Help extends React.Component {
 
   render() {
     const { open } = this.state;
-    const { inversed } = this.props;
+    const { inversed, mode } = this.props;
     return (
       <div className={styles.help}>
-        <div
-          className={inversed ? styles.inversed : styles.text}
+        {/* <div
+          className={!inversed ? styles.inversed : styles.text}
           onClick={this._toggleHelp}
         >
           <i className="ion-information-circled" />
           <span>Help</span>
         </div>
+        <HelpModal open={open} toggleClose={this._toggleHelp} /> */}
+        <Button
+          className="ion-information-circled"
+          active={mode === "paint"}
+          onClick={this._toggleHelp}
+          icon="checkmark"
+          text="Goals"
+        />
         <HelpModal open={open} toggleClose={this._toggleHelp} />
       </div>
     );

@@ -31,6 +31,11 @@ import Sidebar from "components/Sidebar";
 import styles from "styles/containers/builder";
 
 class Builder extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { date: new Date(), showBrickPane: false };
+  // }
+
   render() {
     const {
       mode,
@@ -50,6 +55,7 @@ class Builder extends React.Component {
       resetScene,
       setScene,
     } = this.props;
+
     return (
       <div className={styles.builder}>
         <Topbar
@@ -105,7 +111,7 @@ class Builder extends React.Component {
             grid={gridVisible}
           />
         </BottomBar>
-        {/* <Help inversed={utilsOpen} /> */}
+        <Help inversed={utilsOpen} mode={mode} />
       </div>
     );
   }

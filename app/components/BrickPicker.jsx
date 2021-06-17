@@ -1,6 +1,7 @@
 import React from "react";
 import If from "if-only";
 import isEqual from "lodash/isEqual";
+import Button from "components/Button";
 
 import { displayNameFromDimensions, getBrickIconFromDimensions } from "utils";
 import { bricks } from "utils/constants";
@@ -27,14 +28,27 @@ class BrickPicker extends React.Component {
   }
 
   render() {
-    const { selectedSize, handleSetBrick } = this.props;
+    const { selectedSize, handleSetBrick, mode } = this.props;
     const { open } = this.state;
     return (
+      // <
+      //   <Button
+      //     active={mode === "paint"}
+      //     onClick={() => console.log("build")}
+      //     icon="ios-grid-view"
+      //     text="Brick"
+      //   />
       <div className={styles.brickPicker}>
         <div className={styles.brick} onClick={this._togglePicker}>
-          <div className={styles.brickIcon}>
+          {/* <div className={styles.brickIcon}>
             {getBrickIconFromDimensions(selectedSize)}
-          </div>
+          </div> */}
+          <Button
+            active={mode === "build"}
+            onClick={() => getBrickIconFromDimensions(selectedSize)}
+            icon="ios-grid-view"
+            text="Brick"
+          />
           {/* {displayNameFromDimensions(selectedSize)} */}
         </div>
         <If cond={open}>

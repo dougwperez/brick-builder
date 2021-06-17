@@ -19,7 +19,7 @@ const Topbar = ({
   onClickToggleUtils,
   children,
 }) => {
-  const [displayBricks, setDisplayBricks] = useState(false);
+  // const [displayBricks, setDisplayBricks] = useState(false);
   // const [isOn, toggleIsOn] = useToggle();
 
   // const
@@ -45,19 +45,26 @@ const Topbar = ({
           icon="paintbrush"
           text="Paint"
         />
-        <Button
+        {/* <Button
           active={mode === "paint"}
           onClick={() => onClickSetMode("paint")}
           icon="android-color-palette"
           text="Color"
+        /> */}
+
+        <ColorPicker
+          mode={mode}
+          background={color}
+          handleSetColor={onClickSetColor}
         />
-        <Button
+        {/* <Button
           active={mode === "paint"}
           onClick={() => console.log("build")}
           icon="ios-grid-view"
           text="Brick"
-        />
+        /> */}
         <BrickPicker
+          mode={mode}
           selectedSize={brickSize}
           handleSetBrick={onClickSetBrick}
         />
