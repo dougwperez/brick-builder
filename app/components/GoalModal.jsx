@@ -37,7 +37,7 @@ class GoalModal extends React.Component {
               </p>
               <form onSubmit={this.handleSubmit}>
                 <label>
-                  Name:
+                  Goal 1:
                   <input
                     type="text"
                     value={this.state.value}
