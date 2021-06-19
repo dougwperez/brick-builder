@@ -27,13 +27,14 @@ import Topbar from "components/Topbar";
 import BottomBar from "components/BottomBar";
 import Help from "components/Help";
 import Sidebar from "components/Sidebar";
+import GoalModal from "components/GoalModal";
 
 import styles from "styles/containers/builder";
 
 class Builder extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date(), showGoals: true };
+    this.state = { date: new Date(), showGoals: false };
 
     this.toggleGoalsModal = this.toggleGoalsModal.bind(this);
   }
@@ -96,6 +97,7 @@ class Builder extends React.Component {
           addObject={addBrick}
           updateObject={updateBrick}
         />
+        <GoalModal showGoals={this.state.showGoals} />
         <BottomBar
           onClickSetMode={setMode}
           onClickSetColor={setColor}
@@ -120,11 +122,6 @@ class Builder extends React.Component {
             grid={gridVisible}
           />
         </BottomBar>
-        <Help
-          inversed={utilsOpen}
-          mode={mode}
-          showGoals={this.state.showGoals}
-        />
       </div>
     );
   }

@@ -26,7 +26,6 @@ const BottomBar = ({
 }) => {
   return (
     <div>
-      {showGoals ? <GoalModal /> : console.log("fuck")}
       <div className={styles.bottombar}>
         <div className={styles.section}>
           <div className={styles.section}>
