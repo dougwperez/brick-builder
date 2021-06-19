@@ -6,6 +6,9 @@
 
 @import "~styles/vars";
 
+@brick-height: 60px;
+@tip-size: 7px;
+
 :local(.colorPicker) {
   position: relative;
   display: flex;
@@ -26,12 +29,16 @@
   left: ~"calc(50% - 15px)";
   display: none;
   border-right: pink 12px;
-  // transform: translateX();
 }
 
 :local(.visible) {
+  position: absolute;
+  top: (@brick-height + @base-margin + 5px);
+  left: -(@base-margin / 2);
   // composes: picker;
   border-right: pink 12px;
+  transform: translateY(-15px);
+
   // display: block;
   // transform: scaleX(0);
 }

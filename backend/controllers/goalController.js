@@ -12,3 +12,13 @@ exports.postGoal = async (req, res) => {
     res.status(400).send(err);
   }
 };
+
+exports.getGoalData = async (req, res) => {
+  try {
+    const goals = await Goals.find();
+    res.send({ data: goals });
+  } catch (err) {
+    console.log("Failed to get Goal Data", err);
+    res.status(400).send(err);
+  }
+};

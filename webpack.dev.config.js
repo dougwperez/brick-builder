@@ -1,13 +1,12 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require("path");
+const webpack = require("webpack");
 
-const webpackBaseConfig = require('./webpack.base.config.js');
-const packageJson = require('./package.json');
-
+const webpackBaseConfig = require("./webpack.base.config.js");
+const packageJson = require("./package.json");
 
 module.exports = Object.assign({}, webpackBaseConfig, {
-  devtool: 'cheap-module-eval-source-map',
-  mode: 'development',
+  devtool: "cheap-module-eval-source-map",
+  mode: "development",
   entry: Object.keys(webpackBaseConfig.entry).reduce((result, k) => {
     result[k] = [
       // 'react-hot-loader/patch',
@@ -17,7 +16,7 @@ module.exports = Object.assign({}, webpackBaseConfig, {
     return result;
   }, {}),
   output: Object.assign({}, webpackBaseConfig.output, {
-    publicPath: '/',
+    publicPath: "/",
   }),
   plugins: [
     ...webpackBaseConfig.plugins,
@@ -25,15 +24,17 @@ module.exports = Object.assign({}, webpackBaseConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify('development') }
+      "process.env": { NODE_ENV: JSON.stringify("development") },
     }),
     new webpack.DefinePlugin({
-      'process.env': { REPOSITORY_URL: JSON.stringify(packageJson.repository.url) },
+      "process.env": {
+        REPOSITORY_URL: JSON.stringify(packageJson.repository.url),
+      },
     }),
   ],
-   devServer: {
-    host: '0.0.0.0',
-    port: '4000',
+  devServer: {
+    host: "0.0.0.0",
+    port: "4000",
     // inline: true,
     // hot: true,
     stats: {
@@ -46,12 +47,12 @@ module.exports = Object.assign({}, webpackBaseConfig, {
       chunkModules: false,
     },
     historyApiFallback: true,
-    contentBase: 'assets',
-    publicPath: '/',
+    contentBase: "assets",
+    publicPath: "/",
     quiet: false,
     headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': 'false'
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "false",
     },
   },
 });

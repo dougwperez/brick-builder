@@ -35,8 +35,14 @@ const BottomBar = ({
           <Button
             active={mode === "paint"}
             onClick={toggleGoalsModal}
-            icon="checkmark"
+            icon="trophy"
             text="Goals"
+          />
+          <Button
+            active={mode === "paint"}
+            onClick={toggleGoalsModal}
+            icon="checkmark"
+            text="Check-In"
           />
 
           <Button

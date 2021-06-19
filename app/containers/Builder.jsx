@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import axios from "axios";
 
 import {
   getMode,
@@ -34,13 +35,28 @@ import styles from "styles/containers/builder";
 class Builder extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date(), showGoals: false };
+    this.state = { date: new Date(), showGoals: false, goals: [] };
 
     this.toggleGoalsModal = this.toggleGoalsModal.bind(this);
+    this.getGoals = this.getGoals.bind(this);
+  }
+
+  componentDidMount() {
+    this.getGoals();
   }
 
   toggleGoalsModal() {
     this.setState(({ showGoals }) => ({ showGoals: !showGoals }));
+  }
+
+  getGoals() {
+    axios
+      .get("/goals")
+      .then((response) => {
+        console.log("response.data.data", response.data.data);
+        this.setState({ goals: response.data.data });
+      })
+      .catch((error) => console.log(error, "ERROR at getGoals"));
   }
 
   render() {
