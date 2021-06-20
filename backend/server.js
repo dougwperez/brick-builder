@@ -23,6 +23,7 @@ app.delete("/goals/:id", goalController.deleteGoal);
 app.post("/credits", creditController.postCredits);
 app.get("/credits", creditController.getCredits);
 app.patch("/credits/:id", creditController.patchUpTotalCredits);
+app.patch("/credits/:id", creditController.patchDownTotalCredits);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

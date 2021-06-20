@@ -311,6 +311,8 @@ class Scene extends React.Component {
         translation
       );
       addObject(brick);
+      console.log("Hope it works");
+      this.props.patchDownTotalCredits(this.props.credits._id);
     }
   }
 

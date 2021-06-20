@@ -35,7 +35,7 @@ class CheckInModal extends React.Component {
 
   render() {
     const { goals, patchUpTotalCredits, credits, showCheckIn } = this.props;
-    console.log("CREDITS!!!!", credits._id);
+    // console.log("CREDITS!!!!", credits._id);
     return (
       <div>
         {showCheckIn ? (

@@ -50,6 +50,7 @@ class Builder extends React.Component {
     this.postGoal = this.postGoal.bind(this);
     this.deleteGoal = this.deleteGoal.bind(this);
     this.patchUpTotalCredits = this.patchUpTotalCredits.bind(this);
+    this.patchDownTotalCredits = this.patchDownTotalCredits.bind(this);
     this.getCredits = this.getCredits.bind(this);
   }
 
@@ -127,6 +128,21 @@ class Builder extends React.Component {
       .catch((error) => console.log(error, "ERROR AT patchUpTotalCredits"));
   }
 
+  patchDownTotalCredits(id) {
+    console.log("id", id);
+    // console.log("this.state.credits.totalCredits", this.state.credits._id);
+    const totalCs = this.state.credits.totalCredits - 1;
+    console.log("totalCs", totalCs);
+    const totalCreditsObj = { totalCredits: totalCs };
+    axios
+      .patch(`/credits/${id}`, totalCreditsObj)
+      .then((response) => {
+        // console.log(response);
+        this.getCredits();
+      })
+      .catch((error) => console.log(error, "ERROR AT patchDownTotalCredits"));
+  }
+
   render() {
     const {
       mode,
@@ -180,6 +196,8 @@ class Builder extends React.Component {
           removeObject={removeBrick}
           addObject={addBrick}
           updateObject={updateBrick}
+          credits={this.state.credits}
+          patchDownTotalCredits={this.patchDownTotalCredits}
         />
         <GoalModal
           showGoals={this.state.showGoals}
