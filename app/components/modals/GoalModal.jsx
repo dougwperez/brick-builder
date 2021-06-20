@@ -1,28 +1,30 @@
 import React from "react";
 import styles from "styles/components/goal-modal";
+import GoalEntry from "../GoalEntry";
 
 class GoalModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = { goals: "" };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(event) {
     // alert("A name was submitted: " + this.state.value);
     event.preventDefault();
-    this.props.postGoal(this.state.value);
+    this.props.postGoal(this.state);
   }
 
   render() {
+    const { goals, showGoals, deleteGoal } = this.props;
     return (
       <div>
-        {this.props.showGoals ? (
+        {showGoals ? (
           <div className={styles.goalmodal}>
             <div className={styles.modal}>
               <h1 style={{ textAlign: "center" }}>Goal Constructor</h1>
@@ -39,6 +41,7 @@ class GoalModal extends React.Component {
                 <label>
                   Goal:
                   <input
+                    name="goals"
                     type="text"
                     value={this.state.value}
                     onChange={this.handleChange}
@@ -46,6 +49,15 @@ class GoalModal extends React.Component {
                 </label>
                 <input type="submit" value="Add Goal" />
               </form>
+              <ul>
+                {goals.map((goal) => (
+                  <GoalEntry
+                    key={goal.id}
+                    goal={goal}
+                    deleteGoal={deleteGoal}
+                  />
+                ))}
+              </ul>
             </div>
           </div>
         ) : null}

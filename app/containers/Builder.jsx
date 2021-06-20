@@ -47,6 +47,7 @@ class Builder extends React.Component {
     this.toggleCheckInModal = this.toggleCheckInModal.bind(this);
     this.getGoals = this.getGoals.bind(this);
     this.postGoal = this.postGoal.bind(this);
+    this.deleteGoal = this.deleteGoal.bind(this);
   }
 
   componentDidMount() {
@@ -67,21 +68,32 @@ class Builder extends React.Component {
     axios
       .get("/goals")
       .then((response) => {
-        console.log("response.data.data", response.data.data);
+        // console.log("response.data.data", response.data.data);
         this.setState({ goals: response.data.data });
       })
       .catch((error) => console.log(error, "ERROR at getGoals"));
   }
 
   postGoal(goalInput) {
-    console.log("goalInput", goalInput);
+    // console.log("goalInput", goalInput);
     axios
       .post("/goals", goalInput)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.getGoals();
       })
       .catch((error) => console.log(error, "ERROR AT POSTGOAL"));
+  }
+
+  deleteGoal(id) {
+    console.log("id", id);
+    // axios
+    //   .delete(`/goals/${id}`, id)
+    //   .then((response) => {
+    //     console.log(response);
+    //     this.getGoals();
+    //   })
+    //   .catch((error) => console.log(error, "ERROR AT deleteGoal"));
   }
 
   render() {
@@ -138,7 +150,12 @@ class Builder extends React.Component {
           addObject={addBrick}
           updateObject={updateBrick}
         />
-        <GoalModal showGoals={this.state.showGoals} postGoal={this.postGoal} />
+        <GoalModal
+          showGoals={this.state.showGoals}
+          postGoal={this.postGoal}
+          deleteGoal={this.deleteGoal}
+          goals={this.state.goals}
+        />
         <CheckInModal
           showCheckIn={this.state.showCheckIn}
           postGoal={this.postGoal}
