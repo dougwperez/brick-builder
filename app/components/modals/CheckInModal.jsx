@@ -5,9 +5,11 @@ import GoalCheckEntry from "../GoalCheckEntry";
 class CheckInModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = { value: "", count: 0 };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.incrementCount = this.incrementCount.bind(this);
+    this.decrementCount = this.decrementCount.bind(this);
   }
 
   handleChange(event) {
@@ -18,6 +20,17 @@ class CheckInModal extends React.Component {
     // alert("A name was submitted: " + this.state.value);
     event.preventDefault();
     this.props.postGoal(this.state.value);
+  }
+
+  incrementCount() {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  }
+  decrementCount() {
+    this.setState({
+      count: this.state.count - 1,
+    });
   }
 
   render() {
@@ -32,12 +45,23 @@ class CheckInModal extends React.Component {
               <h3 style={{ textAlign: "center" }}>
                 Complete your daily goals for credits.
               </h3>
-              <p>Something Something in the Month of May</p>
+              {/* <p>Something Something in the Month of May</p> */}
               <ul>
                 {goals.map((goal) => (
-                  <GoalCheckEntry key={goal.id} goal={goal} />
+                  <GoalCheckEntry
+                    key={goal.id}
+                    goal={goal}
+                    incrementCount={this.incrementCount}
+                    decrementCount={this.decrementCount}
+                  />
                 ))}
               </ul>
+              <div style={{ textAlign: "center" }}>
+                <h3 style={{ color: "green" }}>
+                  {this.state.count} Credits Earned Today
+                </h3>
+                <button onClick={this.decrementCount}>Submit</button>
+              </div>
             </div>
           </div>
         ) : null}
