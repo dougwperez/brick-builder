@@ -34,10 +34,11 @@ class CheckInModal extends React.Component {
   }
 
   render() {
-    const { goals } = this.props;
+    const { goals, patchUpTotalCredits, credits, showCheckIn } = this.props;
+    console.log("CREDITS!!!!", credits._id);
     return (
       <div>
-        {this.props.showCheckIn ? (
+        {showCheckIn ? (
           <div className={styles.goalmodal}>
             <div className={styles.modal}>
               <h1 style={{ textAlign: "center" }}>"Date Here" Check-In</h1>
@@ -60,7 +61,16 @@ class CheckInModal extends React.Component {
                 <h3 style={{ color: "green" }}>
                   {this.state.count} Credits Earned Today
                 </h3>
-                <button onClick={this.decrementCount}>Submit</button>
+                <button
+                  onClick={() =>
+                    this.props.patchUpTotalCredits(
+                      credits._id,
+                      this.state.count
+                    )
+                  }
+                >
+                  Submit
+                </button>
               </div>
             </div>
           </div>

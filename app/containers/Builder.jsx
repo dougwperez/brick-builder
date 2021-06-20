@@ -41,6 +41,7 @@ class Builder extends React.Component {
       showGoals: false,
       showCheckIn: false,
       goals: [],
+      credits: { _id: "", dailyCredits: "", totalCredits: "" },
     };
 
     this.toggleGoalsModal = this.toggleGoalsModal.bind(this);
@@ -48,10 +49,13 @@ class Builder extends React.Component {
     this.getGoals = this.getGoals.bind(this);
     this.postGoal = this.postGoal.bind(this);
     this.deleteGoal = this.deleteGoal.bind(this);
+    this.patchUpTotalCredits = this.patchUpTotalCredits.bind(this);
+    this.getCredits = this.getCredits.bind(this);
   }
 
   componentDidMount() {
     this.getGoals();
+    this.getCredits();
   }
 
   toggleGoalsModal() {
@@ -94,6 +98,33 @@ class Builder extends React.Component {
         this.getGoals();
       })
       .catch((error) => console.log(error, "ERROR AT deleteGoal"));
+  }
+
+  getCredits() {
+    axios
+      .get("/credits")
+      .then((response) => {
+        console.log("response.data.data", response.data.data);
+        this.setState({ credits: response.data.data[0] });
+      })
+      .catch((error) => console.log(error, "ERROR at getGoals"));
+  }
+
+  patchUpTotalCredits(id, dailyCredits) {
+    this.toggleCheckInModal();
+    console.log("dailyCredits", dailyCredits);
+    // console.log("id", id);
+    // console.log("this.state.credits.totalCredits", this.state.credits._id);
+    const totalCs = dailyCredits + this.state.credits.totalCredits;
+    console.log("totalCs", totalCs);
+    const totalCreditsObj = { totalCredits: totalCs };
+    axios
+      .patch(`/credits/${id}`, totalCreditsObj)
+      .then((response) => {
+        // console.log(response);
+        this.getCredits();
+      })
+      .catch((error) => console.log(error, "ERROR AT patchUpTotalCredits"));
   }
 
   render() {
@@ -157,8 +188,10 @@ class Builder extends React.Component {
           goals={this.state.goals}
         />
         <CheckInModal
+          patchUpTotalCredits={this.patchUpTotalCredits}
           showCheckIn={this.state.showCheckIn}
           goals={this.state.goals}
+          credits={this.state.credits}
         />
         <BottomBar
           onClickSetMode={setMode}

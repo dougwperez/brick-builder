@@ -14,11 +14,15 @@ connectDB();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//GOAL ROUTES
 app.post("/goals", goalController.postGoal);
 app.get("/goals", goalController.getGoals);
 app.delete("/goals/:id", goalController.deleteGoal);
 
+//CREDIT ROUTES
+app.post("/credits", creditController.postCredits);
 app.get("/credits", creditController.getCredits);
+app.patch("/credits/:id", creditController.patchUpTotalCredits);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
