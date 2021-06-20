@@ -27,7 +27,7 @@ class GoalModal extends React.Component {
         {showGoals ? (
           <div className={styles.goalmodal}>
             <div className={styles.modal}>
-              <h1 style={{ textAlign: "center" }}>Goal Constructor</h1>
+              <h1 style={{ textAlign: "center" }}>Goal Builder</h1>
               <br />
               <h3 style={{ textAlign: "center" }}>
                 Select up to three daily goals:

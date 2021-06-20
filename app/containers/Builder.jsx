@@ -86,14 +86,14 @@ class Builder extends React.Component {
   }
 
   deleteGoal(id) {
-    console.log("id", id);
-    // axios
-    //   .delete(`/goals/${id}`, id)
-    //   .then((response) => {
-    //     console.log(response);
-    //     this.getGoals();
-    //   })
-    //   .catch((error) => console.log(error, "ERROR AT deleteGoal"));
+    // console.log("id", id);
+    axios
+      .delete(`/goals/${id}`)
+      .then((response) => {
+        // console.log(response);
+        this.getGoals();
+      })
+      .catch((error) => console.log(error, "ERROR AT deleteGoal"));
   }
 
   render() {
@@ -158,7 +158,7 @@ class Builder extends React.Component {
         />
         <CheckInModal
           showCheckIn={this.state.showCheckIn}
-          postGoal={this.postGoal}
+          goals={this.state.goals}
         />
         <BottomBar
           onClickSetMode={setMode}

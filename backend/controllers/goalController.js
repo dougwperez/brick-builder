@@ -22,3 +22,14 @@ exports.getGoals = async (req, res) => {
     res.status(400).send(err);
   }
 };
+
+exports.deleteGoal = async (req, res) => {
+  try {
+    const goal = await Goals.findById(req.params.id);
+    await goal.remove();
+    res.send({ data: true });
+  } catch (err) {
+    console.log("Failed to delete goal", err);
+    res.status(404).send(err);
+  }
+};

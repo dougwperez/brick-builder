@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 
 app.post("/goals", goalController.postGoal);
 app.get("/goals", goalController.getGoals);
+app.delete("/goals/:id", goalController.deleteGoal);
 
 app.get("/credits", creditController.getCredits);
 
