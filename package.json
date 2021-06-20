@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "initiate": "node backend/server",
+    "dev:react": "webpack -d --watch",
     "server": "nodemon backend/server",
     "clean": "rimraf docs/",
     "start": "webpack-dev-server --progress --config webpack.dev.config.js",

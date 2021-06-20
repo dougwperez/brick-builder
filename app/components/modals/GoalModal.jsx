@@ -1,5 +1,4 @@
 import React from "react";
-import Modal from "react-bootstrap/Modal";
 import styles from "styles/components/goal-modal";
 
 class GoalModal extends React.Component {
@@ -15,8 +14,9 @@ class GoalModal extends React.Component {
   }
 
   handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
+    // alert("A name was submitted: " + this.state.value);
     event.preventDefault();
+    this.props.postGoal(this.state.value);
   }
 
   render() {
@@ -37,14 +37,14 @@ class GoalModal extends React.Component {
               </p>
               <form onSubmit={this.handleSubmit}>
                 <label>
-                  Goal 1:
+                  Goal:
                   <input
                     type="text"
                     value={this.state.value}
                     onChange={this.handleChange}
                   />
                 </label>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Add Goal" />
               </form>
             </div>
           </div>

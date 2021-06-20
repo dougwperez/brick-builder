@@ -3,7 +3,6 @@ import React from "react";
 import Button from "components/Button";
 import ColorPicker from "components/ColorPicker";
 import BrickPicker from "components/BrickPicker";
-import GoalModal from "components/GoalModal";
 
 import styles from "styles/components/bottombar";
 import Help from "components/Help";
@@ -22,6 +21,7 @@ const BottomBar = ({
   children,
   inversed,
   toggleGoalsModal,
+  toggleCheckInModal,
   showGoals,
 }) => {
   return (
@@ -40,7 +40,7 @@ const BottomBar = ({
           />
           <Button
             active={mode === "paint"}
-            onClick={toggleGoalsModal}
+            onClick={toggleCheckInModal}
             icon="checkmark"
             text="Check-In"
           />

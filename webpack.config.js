@@ -8,7 +8,7 @@ const packageJson = require("./package.json");
 module.exports = Object.assign({}, webpackBaseConfig, {
   devtool: "source-map",
   //Changed from production to development
-  mode: "development",
+  mode: "production",
   output: Object.assign({}, webpackBaseConfig.output, {
     path: path.resolve(__dirname, "docs"),
     publicPath: "",

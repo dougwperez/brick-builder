@@ -1,17 +1,17 @@
 const mongoose = require("mongoose");
 
 const goalSchema = mongoose.Schema({
-  goals: { type: String, required: true },
+  goals: String,
 });
 
-const Goals = mongoose.model("Goal", goalSchema);
+let Goals = mongoose.model("Goal", goalSchema);
 
 const creditSchema = mongoose.Schema({
-  dailyCredits: { type: Number, required: false },
-  totalCredits: { type: Number, required: false },
+  dailyCredits: Number,
+  totalCredits: Number,
 });
 
-const Credits = mongoose.model("Credit", goalSchema);
+let Credits = mongoose.model("Credit", goalSchema);
 
 module.exports = {
   Goals,

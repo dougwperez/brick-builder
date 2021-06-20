@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post("/goals", goalController.postGoal);
-app.get("/goals", goalController.getGoalData);
+app.get("/goals", goalController.getGoals);
 
 app.get("/credits", creditController.getCredits);
 

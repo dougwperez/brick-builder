@@ -28,17 +28,25 @@ import Topbar from "components/Topbar";
 import BottomBar from "components/BottomBar";
 import Help from "components/Help";
 import Sidebar from "components/Sidebar";
-import GoalModal from "components/GoalModal";
+import GoalModal from "components/modals/GoalModal";
+import CheckInModal from "components/modals/CheckInModal";
 
 import styles from "styles/containers/builder";
 
 class Builder extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date(), showGoals: false, goals: [] };
+    this.state = {
+      date: new Date(),
+      showGoals: false,
+      showCheckIn: false,
+      goals: [],
+    };
 
     this.toggleGoalsModal = this.toggleGoalsModal.bind(this);
+    this.toggleCheckInModal = this.toggleCheckInModal.bind(this);
     this.getGoals = this.getGoals.bind(this);
+    this.postGoal = this.postGoal.bind(this);
   }
 
   componentDidMount() {
@@ -47,6 +55,12 @@ class Builder extends React.Component {
 
   toggleGoalsModal() {
     this.setState(({ showGoals }) => ({ showGoals: !showGoals }));
+    this.setState({ showCheckIn: false });
+  }
+
+  toggleCheckInModal() {
+    this.setState(({ showCheckIn }) => ({ showCheckIn: !showCheckIn }));
+    this.setState({ showGoals: false });
   }
 
   getGoals() {
@@ -57,6 +71,17 @@ class Builder extends React.Component {
         this.setState({ goals: response.data.data });
       })
       .catch((error) => console.log(error, "ERROR at getGoals"));
+  }
+
+  postGoal(goalInput) {
+    console.log("goalInput", goalInput);
+    axios
+      .post("/goals", goalInput)
+      .then((response) => {
+        console.log(response);
+        this.getGoals();
+      })
+      .catch((error) => console.log(error, "ERROR AT POSTGOAL"));
   }
 
   render() {
@@ -113,7 +138,11 @@ class Builder extends React.Component {
           addObject={addBrick}
           updateObject={updateBrick}
         />
-        <GoalModal showGoals={this.state.showGoals} />
+        <GoalModal showGoals={this.state.showGoals} postGoal={this.postGoal} />
+        <CheckInModal
+          showCheckIn={this.state.showCheckIn}
+          postGoal={this.postGoal}
+        />
         <BottomBar
           onClickSetMode={setMode}
           onClickSetColor={setColor}
@@ -128,6 +157,7 @@ class Builder extends React.Component {
           showGoals={this.state.showGoals}
           inversed={utilsOpen}
           toggleGoalsModal={this.toggleGoalsModal}
+          toggleCheckInModal={this.toggleCheckInModal}
         >
           <Sidebar
             utilsOpen={utilsOpen}

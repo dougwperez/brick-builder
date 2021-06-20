@@ -13,7 +13,7 @@ exports.postGoal = async (req, res) => {
   }
 };
 
-exports.getGoalData = async (req, res) => {
+exports.getGoals = async (req, res) => {
   try {
     const goals = await Goals.find();
     res.send({ data: goals });
