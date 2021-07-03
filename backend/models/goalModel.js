@@ -12,6 +12,7 @@ const creditSchema = mongoose.Schema({
   dailyCredits: { type: Number, default: 0, required: true },
   //Increment on the front end, in the axios patch request. Increment upon submittion of checkbox form. Perhaps call this function upon succesful patch of daily credits.
   totalCredits: { type: Number, default: 1, required: true },
+  newDay: { type: Boolean, default: true },
 });
 
 let Credits = mongoose.model("Credit", creditSchema);

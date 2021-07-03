@@ -129,6 +129,7 @@ class Builder extends React.Component {
   }
 
   patchDownTotalCredits(id) {
+    console.log("saved bricks", this.props.bricks);
     console.log("id", id);
     // console.log("this.state.credits.totalCredits", this.state.credits._id);
     const totalCs = this.state.credits.totalCredits - 1;
@@ -142,6 +143,10 @@ class Builder extends React.Component {
       })
       .catch((error) => console.log(error, "ERROR AT patchDownTotalCredits"));
   }
+
+  // postSavedBricks() {
+
+  // }
 
   render() {
     const {
@@ -226,6 +231,7 @@ class Builder extends React.Component {
           inversed={utilsOpen}
           toggleGoalsModal={this.toggleGoalsModal}
           toggleCheckInModal={this.toggleCheckInModal}
+          credits={this.state.credits}
         >
           <Sidebar
             utilsOpen={utilsOpen}

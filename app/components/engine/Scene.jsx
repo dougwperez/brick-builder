@@ -270,7 +270,9 @@ class Scene extends React.Component {
             this._deleteCube(intersect);
           }
           // create cube
-          else {
+          // console.log("totalCREDS", this.props.credits.totalCredits);
+          //Original below:
+          else if (this.props.credits.totalCredits >= 1) {
             //RESTRICT THIS TO CORRESPOND WITH GOALS
             this._createCube(intersect, scene.rollOverBrick);
           }
@@ -282,6 +284,7 @@ class Scene extends React.Component {
   }
 
   _createCube(intersect, rollOverBrick) {
+    // console.log("totalCREDS", this.props.credits.totalCredits);
     const { rotation } = this.state;
     const { brickColor, dimensions, objects, addObject } = this.props;
     let canCreate = true;

@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 4000;
 const path = require("path");
+const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const connectDB = require("./database/db.js");
 const goalController = require("./controllers/goalController.js");
@@ -9,6 +10,7 @@ const creditController = require("./controllers/creditController.js");
 
 app.use("/", express.static(path.join(__dirname, "../docs")));
 
+dotenv.config();
 connectDB();
 
 app.use(bodyParser.urlencoded({ extended: false }));

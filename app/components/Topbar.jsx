@@ -27,6 +27,7 @@ const Topbar = ({
     <div className={styles.topbar}>
       <div className={styles.section}>
         {/* <div className={styles.title}></div> */}
+
         <Button
           active={mode === "build"}
           onClick={() => onClickSetMode("build")}

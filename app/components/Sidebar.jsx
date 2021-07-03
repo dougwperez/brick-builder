@@ -41,10 +41,24 @@ class Sidebar extends React.Component {
               </div>
             </div>
           </div>
+          {/* <div className={styles.row}>
+            <div active={grid} onClick={this._quickSave}>
+              <div className={styles.text}>
+                <i className="ion-grid" />
+                <span>Quick Save</span>
+              </div>
+            </div>
+          </div> */}
         </div>
       </div>
     );
   }
+
+  // @autobind
+  // _quickSave() {
+  //   const { objects } = this.props;
+  //   console.log("SAVED", objects);
+  // }
 
   @autobind
   _exportFile() {

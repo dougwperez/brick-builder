@@ -62,12 +62,13 @@ class CheckInModal extends React.Component {
                   {this.state.count} Credits Earned Today
                 </h3>
                 <button
-                  onClick={() =>
+                  onClick={() => {
                     this.props.patchUpTotalCredits(
                       credits._id,
                       this.state.count
-                    )
-                  }
+                    );
+                    this.setState({ count: 0 });
+                  }}
                 >
                   Submit
                 </button>

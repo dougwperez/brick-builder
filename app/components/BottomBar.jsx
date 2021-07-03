@@ -23,13 +23,14 @@ const BottomBar = ({
   toggleGoalsModal,
   toggleCheckInModal,
   showGoals,
+  credits,
 }) => {
   return (
     <div>
       <div className={styles.bottombar}>
         <div className={styles.section}>
           <div className={styles.section}>
-            <div className={styles.title}>Streak: 10 days!</div>
+            <div className={styles.title}>Credits: {credits.totalCredits}</div>
           </div>
 
           <Button
@@ -37,6 +38,7 @@ const BottomBar = ({
             onClick={toggleGoalsModal}
             icon="trophy"
             text="Goals"
+            style={{ color: "pink" }}
           />
           <Button
             active={mode === "paint"}

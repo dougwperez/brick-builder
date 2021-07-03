@@ -1,4 +1,4 @@
-export const ADD_BRICK = 'ADD_BRICK';
+export const ADD_BRICK = "ADD_BRICK";
 
 export function addBrick(brick) {
   return {
@@ -9,8 +9,7 @@ export function addBrick(brick) {
   };
 }
 
-
-export const REMOVE_BRICK = 'REMOVE_BRICK';
+export const REMOVE_BRICK = "REMOVE_BRICK";
 
 export function removeBrick(id) {
   return {
@@ -21,8 +20,7 @@ export function removeBrick(id) {
   };
 }
 
-
-export const UPDATE_BRICK = 'UPDATE_BRICK';
+export const UPDATE_BRICK = "UPDATE_BRICK";
 
 export function updateBrick(brick) {
   return {
@@ -33,8 +31,7 @@ export function updateBrick(brick) {
   };
 }
 
-
-export const RESET_SCENE = 'RESET_SCENE';
+export const RESET_SCENE = "RESET_SCENE";
 
 export function resetScene() {
   return {
@@ -42,8 +39,7 @@ export function resetScene() {
   };
 }
 
-
-export const SET_SCENE = 'SET_SCENE';
+export const SET_SCENE = "SET_SCENE";
 
 export function setScene(bricks) {
   return {
@@ -52,4 +48,5 @@ export function setScene(bricks) {
       bricks,
     },
   };
+  console.log("BRICKS", bricks);
 }
