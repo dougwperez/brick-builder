@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const port = 4000;
+// const port = 4000;
+let port = process.env.PORT || 4000;
 const path = require("path");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
@@ -26,10 +27,6 @@ app.post("/credits", creditController.postCredits);
 app.get("/credits", creditController.getCredits);
 app.patch("/credits/:id", creditController.patchUpTotalCredits);
 app.patch("/credits/:id", creditController.patchDownTotalCredits);
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
