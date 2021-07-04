@@ -16,6 +16,24 @@ class Sidebar extends React.Component {
           <div className={styles.row} onClick={resetScene}>
             <div className={styles.text}>
               <i className="ion-trash-a" />
+              <span>Log Out</span>
+            </div>
+          </div>
+          <div className={styles.row} onClick={resetScene}>
+            <div className={styles.text}>
+              <i className="ion-trash-a" />
+              <span>Hall of Fame</span>
+            </div>
+          </div>
+          <div className={styles.row} onClick={resetScene}>
+            <div className={styles.text}>
+              <i className="ion-trash-a" />
+              <span>Publish scene</span>
+            </div>
+          </div>
+          <div className={styles.row} onClick={resetScene}>
+            <div className={styles.text}>
+              <i className="ion-trash-a" />
               <span>Reset scene</span>
             </div>
           </div>
@@ -39,6 +57,12 @@ class Sidebar extends React.Component {
                 <i className="ion-grid" />
                 <span>Toggle Grid</span>
               </div>
+            </div>
+          </div>
+          <div className={styles.row} onClick={resetScene}>
+            <div className={styles.text}>
+              <i className="ion-trash-a" />
+              <span>Help</span>
             </div>
           </div>
           {/* <div className={styles.row}>
