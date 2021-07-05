@@ -38,7 +38,7 @@ class CheckInModal extends React.Component {
     // console.log("CREDITS!!!!", credits._id);
     return (
       <div>
-        {showCheckIn ? (
+        {showCheckIn && credits.newDay ? (
           <div className={styles.goalmodal}>
             <div className={styles.modal}>
               <h1 style={{ textAlign: "center" }}>"Date Here" Check-In</h1>
@@ -73,6 +73,17 @@ class CheckInModal extends React.Component {
                   Submit
                 </button>
               </div>
+            </div>
+          </div>
+        ) : showCheckIn && !credits.newDay ? (
+          <div className={styles.goalmodal}>
+            <div className={styles.modal}>
+              <h1 style={{ textAlign: "center" }}>Come Back Tomorrow</h1>
+              <br />
+              <h3 style={{ textAlign: "center" }}>
+                Building a habit takes time. Come back tomorrow and check off
+                your completed habits for points!
+              </h3>
             </div>
           </div>
         ) : null}

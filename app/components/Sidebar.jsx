@@ -15,19 +15,19 @@ class Sidebar extends React.Component {
         <div className={styles.content}>
           <div className={styles.row} onClick={resetScene}>
             <div className={styles.text}>
-              <i className="ion-trash-a" />
+              <i className="ion-log-out" />
               <span>Log Out</span>
             </div>
           </div>
           <div className={styles.row} onClick={resetScene}>
             <div className={styles.text}>
-              <i className="ion-trash-a" />
+              <i className="ion-ios-star" />
               <span>Hall of Fame</span>
             </div>
           </div>
           <div className={styles.row} onClick={resetScene}>
             <div className={styles.text}>
-              <i className="ion-trash-a" />
+              <i className="ion-ios-world-outline" />
               <span>Publish scene</span>
             </div>
           </div>
@@ -37,7 +37,7 @@ class Sidebar extends React.Component {
               <span>Reset scene</span>
             </div>
           </div>
-          <div className={styles.row} onClick={this._exportFile}>
+          {/* <div className={styles.row} onClick={this._exportFile}>
             <div className={styles.text}>
               <i className="ion-log-out" />
               <span>Export scene</span>
@@ -50,7 +50,7 @@ class Sidebar extends React.Component {
                 <span>Import scene</span>
               </div>
             </FileUploader>
-          </div>
+          </div> */}
           <div className={styles.row}>
             <div active={grid} onClick={onClickToggleGrid}>
               <div className={styles.text}>
@@ -61,7 +61,7 @@ class Sidebar extends React.Component {
           </div>
           <div className={styles.row} onClick={resetScene}>
             <div className={styles.text}>
-              <i className="ion-trash-a" />
+              <i className="ion-help-circled" />
               <span>Help</span>
             </div>
           </div>

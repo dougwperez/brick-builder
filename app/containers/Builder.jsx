@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import axios from "axios";
+import Moment from "react-moment";
 
 import {
   getMode,
@@ -41,7 +42,7 @@ class Builder extends React.Component {
       showGoals: false,
       showCheckIn: false,
       goals: [],
-      credits: { _id: "", dailyCredits: "", totalCredits: "" },
+      credits: { _id: "", dailyCredits: "", totalCredits: "", newDay: "" },
     };
 
     this.toggleGoalsModal = this.toggleGoalsModal.bind(this);
@@ -51,6 +52,7 @@ class Builder extends React.Component {
     this.deleteGoal = this.deleteGoal.bind(this);
     this.patchUpTotalCredits = this.patchUpTotalCredits.bind(this);
     this.patchDownTotalCredits = this.patchDownTotalCredits.bind(this);
+    this.patchToggleNewDayCredits = this.patchToggleNewDayCredits.bind(this);
     this.getCredits = this.getCredits.bind(this);
   }
 
@@ -112,6 +114,7 @@ class Builder extends React.Component {
   }
 
   patchUpTotalCredits(id, dailyCredits) {
+    this.patchToggleNewDayCredits(id);
     this.toggleCheckInModal();
     console.log("dailyCredits", dailyCredits);
     // console.log("id", id);
@@ -142,6 +145,18 @@ class Builder extends React.Component {
         this.getCredits();
       })
       .catch((error) => console.log(error, "ERROR AT patchDownTotalCredits"));
+  }
+
+  patchToggleNewDayCredits(id) {
+    const NewDayObj = { newDay: false };
+    axios
+      .patch(`/credits/${id}`, NewDayObj)
+      .then((response) => {
+        this.getCredits();
+      })
+      .catch((error) =>
+        console.log(error, "ERROR AT patchToggleNewDayCredits")
+      );
   }
 
   // postSavedBricks() {
@@ -191,6 +206,8 @@ class Builder extends React.Component {
             onClickToggleGrid={toggleGrid}
           />
         </Topbar>
+        {/* MOMENT WORKS, GETS CURRENT TIME, JUST NEED TO REFRESH PAGE RIGHT AFTER MIDNIGHT */}
+        {/* <Moment local></Moment> */}
         <Scene
           brickColor={color}
           objects={bricks}
@@ -212,6 +229,7 @@ class Builder extends React.Component {
         />
         <CheckInModal
           patchUpTotalCredits={this.patchUpTotalCredits}
+          patchToggleNewDayCredits={this.patchToggleNewDayCredits}
           showCheckIn={this.state.showCheckIn}
           goals={this.state.goals}
           credits={this.state.credits}

@@ -4,28 +4,26 @@
 // Component File
 // ----------------
 
-@import '~styles/vars';
+@import "~styles/vars";
 
 @separator-height: 10px;
-
 
 :local(.sidebar) {
   position: absolute;
   top: 100%;
   right: 0;
   background: @secondary-blue;
-  height: ~'calc(100vh - 100%)';
-  box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.25), inset 2px -2px 3px rgba(0, 0, 0, 0.25);
+  height: ~"calc(100vh - 100%)";
+  box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.25),
+    inset 2px -2px 3px rgba(0, 0, 0, 0.25);
   transform: translateX(100%);
   transition: all @base-transition-time ease-in-out;
 }
-
 
 :local(.visible) {
   composes: sidebar;
   transform: translateX(0);
 }
-
 
 :local(.separator) {
   position: relative;
@@ -35,16 +33,14 @@
   margin-bottom: @base-padding-small;
 }
 
-
 :local(.content) {
   padding: @base-padding;
 }
 
-
 :local(.row) {
-  margin: @base-margin * 2 0;
+  margin: @base-margin * 3 0;
   color: @white;
-  font-size: 0.9em;
+  font-size: 1.1em;
   transition: all @base-transition-time ease-in-out;
 
   &:hover {
@@ -52,7 +48,6 @@
     cursor: pointer;
   }
 }
-
 
 :local(.text) {
   display: flex;

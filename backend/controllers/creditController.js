@@ -44,3 +44,15 @@ exports.patchDownTotalCredits = async (req, res) => {
     res.status(404).send(err);
   }
 };
+
+exports.patchToggleNewDayCredits = async (req, res) => {
+  try {
+    const target = await Credits.findById(req.params.id);
+    Object.assign(target, req.body);
+    target.save();
+    res.send({ data: target });
+  } catch (err) {
+    console.log("Failed to patch Down target", err);
+    res.status(404).send(err);
+  }
+};
