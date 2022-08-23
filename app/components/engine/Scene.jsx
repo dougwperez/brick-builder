@@ -49,29 +49,29 @@ class Scene extends React.Component {
     this._start();
   }
 
-  componentDidUpdate(prevProps) {
-    const { mode, grid, dimensions, objects } = this.props;
-    if (mode !== prevProps.mode && mode === "paint") {
-      this.rollOverBrick.visible = false;
-    } else if (mode !== prevProps.mode && mode === "build") {
-      this.rollOverBrick.visible = true;
-    }
+  // componentDidUpdate(prevProps) {
+  //   const { mode, grid, dimensions, objects } = this.props;
+  //   if (mode !== prevProps.mode && mode === "paint") {
+  //     this.rollOverBrick.visible = false;
+  //   } else if (mode !== prevProps.mode && mode === "build") {
+  //     this.rollOverBrick.visible = true;
+  //   }
 
-    if (grid !== prevProps.grid && grid === true) {
-      this.grid.visible = true;
-    } else if (grid !== prevProps.grid && grid !== true) {
-      this.grid.visible = false;
-    } else if (
-      prevProps.dimensions.x !== dimensions.x ||
-      prevProps.dimensions.z !== dimensions.z
-    ) {
-      this.rollOverBrick.setShape(dimensions);
-    }
+  //   if (grid !== prevProps.grid && grid === true) {
+  //     this.grid.visible = true;
+  //   } else if (grid !== prevProps.grid && grid !== true) {
+  //     this.grid.visible = false;
+  //   } else if (
+  //     prevProps.dimensions.x !== dimensions.x ||
+  //     prevProps.dimensions.z !== dimensions.z
+  //   ) {
+  //     this.rollOverBrick.setShape(dimensions);
+  //   }
 
-    if (objects.length !== prevProps.objects.length) {
-      this._setObjectsFromState();
-    }
-  }
+  //   if (objects.length !== prevProps.objects.length) {
+  //     this._setObjectsFromState();
+  //   }
+  // }
 
   _initCore() {
     const scene = new THREE.Scene();

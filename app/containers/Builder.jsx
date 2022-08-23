@@ -185,7 +185,7 @@ class Builder extends React.Component {
 
     return (
       <div className={styles.builder}>
-        <Topbar
+        {/* <Topbar
           onClickSetMode={setMode}
           onClickSetColor={setColor}
           onClickToggleGrid={toggleGrid}
@@ -196,16 +196,16 @@ class Builder extends React.Component {
           onClickSetBrick={setBrick}
           utilsOpen={utilsOpen}
           onClickToggleUtils={toggleUtils}
-        >
-          <Sidebar
+        > */}
+        {/* <Sidebar
             utilsOpen={utilsOpen}
             resetScene={resetScene}
             objects={bricks}
             importScene={setScene}
             grid={gridVisible}
             onClickToggleGrid={toggleGrid}
-          />
-        </Topbar>
+          /> */}
+        {/* </Topbar> */}
         {/* MOMENT WORKS, GETS CURRENT TIME, JUST NEED TO REFRESH PAGE RIGHT AFTER MIDNIGHT */}
         {/* <Moment local></Moment> */}
         <Scene
@@ -221,7 +221,7 @@ class Builder extends React.Component {
           credits={this.state.credits}
           patchDownTotalCredits={this.patchDownTotalCredits}
         />
-        <GoalModal
+        {/* <GoalModal
           showGoals={this.state.showGoals}
           postGoal={this.postGoal}
           deleteGoal={this.deleteGoal}
@@ -259,7 +259,7 @@ class Builder extends React.Component {
             onClickToggleGrid={toggleGrid}
             grid={gridVisible}
           />
-        </BottomBar>
+        </BottomBar> */}
       </div>
     );
   }
